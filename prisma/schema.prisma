@@ -1,0 +1,75 @@
+enum Role {
+  ADMIN
+  USER
+}
+
+enum TransactionStatus {
+  PENDING
+  APPROVED
+  FAILED
+}
+
+datasource db {
+  provider = "mysql"
+  url = env("DATABASE_URL")
+}
+
+model User {
+  id String @id @default(uuid())
+  email String @unique
+  password String
+  role Role
+}
+
+model Gateway {
+  id String @id @default(uuid())
+  name String
+  isActive Boolean
+  priority Int
+
+  transactions Transaction[]
+}
+
+model Product {
+  id String @id @default(uuid())
+  name String
+  amount Int
+
+  transactionProducts TransactionProduct[]
+}
+
+model Client {
+  id String @id @default(uuid())
+  name String
+  email String @unique
+
+  transactions Transaction[]
+}
+
+model Transaction {
+  id String @id @default(uuid())
+  clientId  String
+  gatewayId String
+  externalId String @unique
+  amount Int
+  status TransactionStatus
+  cardLastNumbers String?
+
+  client Client @relation(fields: [clientId], references: [id])
+  gateway Gateway @relation(fields: [gatewayId], references: [id])
+
+  products TransactionProduct[]
+}
+
+model TransactionProduct {
+  id String @id @default(uuid())
+
+  transactionId String
+  productId String
+  quantity Int
+
+  transaction Transaction @relation(fields: [transactionId], references: [id])
+  product Product @relation(fields: [productId], references: [id])
+
+  @@unique([transactionId, productId])
+}

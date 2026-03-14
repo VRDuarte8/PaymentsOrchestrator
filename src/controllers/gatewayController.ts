@@ -181,29 +181,6 @@ export const changeGatewayPriority = async (req: Request, res: Response) => {
   }
 };
 
-// Update Name
-export const updateGatewayName = async (req: Request, res: Response) => {
-  try {
-    const id = req.params.id as string;
-    const { name } = req.body;
-
-    const updatedGateway = await prisma.gateway.update({
-      where: { id },
-      data: { name },
-    });
-
-    res.status(200).json({
-      id: updatedGateway.id,
-      name: updatedGateway.name,
-    });
-  } catch (error) {
-    console.error('Erro de Update: ', error);
-    return res
-      .status(500)
-      .json({ error: 'Erro interno ao atualizar o nome do gateway!' });
-  }
-};
-
 // Delete Gateway
 export const deleteGateway = async (req: Request, res: Response) => {
   try {

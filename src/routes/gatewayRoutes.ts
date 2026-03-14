@@ -13,7 +13,6 @@ import {
   listGatewaybyId,
   enableOrDisableGateway,
   changeGatewayPriority,
-  updateGatewayName,
   deleteGateway,
 } from '../controllers/gatewayController.js';
 
@@ -29,14 +28,6 @@ router.post(
 );
 router.get('/', authGuard, listGateways);
 router.get('/:id', authGuard, listGatewaybyId);
-router.put(
-  '/:id',
-  authGuard,
-  roleGuard([Role.ADMIN, Role.FINANCE]),
-  nameValidation(),
-  validate,
-  updateGatewayName,
-);
 router.put(
   '/active/:id',
   authGuard,

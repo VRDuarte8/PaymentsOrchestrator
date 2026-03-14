@@ -59,7 +59,7 @@ model Transaction {
   externalId String @unique
   amount Int
   status TransactionStatus
-  cardLastNumbers String?
+  cardLastNumbers String
 
   client Client @relation(fields: [clientId], references: [id])
   gateway Gateway @relation(fields: [gatewayId], references: [id])

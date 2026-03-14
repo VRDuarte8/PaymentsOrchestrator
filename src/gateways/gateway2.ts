@@ -11,12 +11,12 @@ export class Gateway2 implements PaymentGateway {
   async processPayment(data: PaymentData): Promise<PaymentResult> {
     try {
       const response = await axios.post(
-        `${this.baseUrl}/transactions`,
+        `${this.baseUrl}/transacoes`,
         {
-          amount: data.amount,
-          name: data.name,
+          valor: data.amount,
+          nome: data.name,
           email: data.email,
-          cardNumber: data.cardNumber,
+          numeroCartao: data.cardNumber,
           cvv: data.cvv,
         },
         {

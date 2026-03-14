@@ -25,3 +25,12 @@ export const loginValidation = () => {
     body('password').isString().withMessage('A senha é obrigatória'),
   ];
 };
+
+export const userUpdateValidation = () => {
+  return [
+    body('password')
+      .optional()
+      .isLength({ min: 5 })
+      .withMessage('A senha precisa ter no mínimo 5 caracteres!'),
+  ];
+};

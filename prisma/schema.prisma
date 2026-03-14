@@ -1,5 +1,16 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url = env("DATABASE_URL")
+}
+
 enum Role {
   ADMIN
+  MANAGER
+  FINANCE
   USER
 }
 
@@ -7,11 +18,6 @@ enum TransactionStatus {
   PENDING
   APPROVED
   FAILED
-}
-
-datasource db {
-  provider = "mysql"
-  url = env("DATABASE_URL")
 }
 
 model User {

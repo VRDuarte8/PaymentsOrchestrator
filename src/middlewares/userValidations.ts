@@ -2,11 +2,6 @@ import { body } from "express-validator";
 
 export const registerValidation = () => {
   return [
-    body('name')
-      .notEmpty()
-      .withMessage('O nome é obrigatório!')
-      .isLength({ min: 3 })
-      .withMessage('O nome precisa ter no mínimo 3 caracteres!'),
     body('email')
       .notEmpty()
       .withMessage('o e-mail é obrigatório')

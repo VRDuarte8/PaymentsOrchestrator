@@ -62,6 +62,12 @@ export const updateProduct = async (req: Request, res: Response) => {
     const id = req.params.id as string;
     const { name, amount } = req.body;
 
+    const product = await prisma.product.findUnique({ where: { id } });
+
+    if (!product) {
+      return res.status(422).json({ errors: ['Produto não encontrado!'] });
+    }
+
     const updatedData: any = {};
 
     if (name) {
@@ -92,6 +98,12 @@ export const updateProduct = async (req: Request, res: Response) => {
 export const deleteProduct = async (req: Request, res: Response) => {
   try {
     const id = req.params.id as string;
+
+    const product = await prisma.product.findUnique({ where: { id } });
+
+    if (!product) {
+      return res.status(422).json({ errors: ['Produto não encontrado!'] });
+    }
 
     await prisma.product.delete({
       where: { id },

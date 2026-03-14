@@ -9,6 +9,12 @@ export const updateUser = async (req: Request, res: Response) => {
     const id = req.params.id as string;
     const { password, role } = req.body;
 
+    const user = await prisma.user.findUnique({ where: { id } });
+
+    if (!user) {
+      return res.status(422).json({ errors: ['Usuário não encontrado!'] });
+    }
+
     const updatedData: any = {};
 
     if (password) {
@@ -40,6 +46,12 @@ export const updateUser = async (req: Request, res: Response) => {
 export const deleteUser = async (req: Request, res: Response) => {
   try {
     const id = req.params.id as string;
+
+    const user = await prisma.user.findUnique({ where: { id } });
+
+    if (!user) {
+      return res.status(422).json({ errors: ['Usuário não encontrado!'] });
+    }
 
     await prisma.user.delete({ where: { id } });
 

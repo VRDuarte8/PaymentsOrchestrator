@@ -31,7 +31,7 @@ model Gateway {
   id String @id @default(uuid())
   name String
   isActive Boolean
-  priority Int
+  priority Int 
 
   transactions Transaction[]
 }

@@ -89,7 +89,11 @@ export const purchase = async (req: Request, res: Response) => {
 
 export const listTransactions = async (req: Request, res: Response) => {
   try {
-    const transactions = await prisma.transaction.findMany();
+    const transactions = await prisma.transaction.findMany({
+      include: {
+        products: true
+      }
+    });
 
     res.status(200).json(transactions);
   } catch (error) {

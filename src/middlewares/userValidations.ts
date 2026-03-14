@@ -1,4 +1,5 @@
-import { body } from "express-validator";
+import { body } from 'express-validator';
+import { Role } from '@prisma/client';
 
 export const registerValidation = () => {
   return [
@@ -12,6 +13,10 @@ export const registerValidation = () => {
       .withMessage('A senha é obrigatória')
       .isLength({ min: 5 })
       .withMessage('A senha precisa ter no mínimo 5 caracteres!'),
+    body('role')
+      .optional()
+      .isIn(Object.values(Role))
+      .withMessage('Role inválida'),
   ];
 };
 
@@ -32,5 +37,9 @@ export const userUpdateValidation = () => {
       .optional()
       .isLength({ min: 5 })
       .withMessage('A senha precisa ter no mínimo 5 caracteres!'),
+    body('role')
+      .optional()
+      .isIn(Object.values(Role))
+      .withMessage('Role inválida'),
   ];
 };

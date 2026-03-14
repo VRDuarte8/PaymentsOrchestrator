@@ -39,7 +39,7 @@ model Gateway {
 model Product {
   id String @id @default(uuid())
   name String
-  amount Int
+  amount Decimal @db.Decimal(10, 2)
 
   transactionProducts TransactionProduct[]
 }

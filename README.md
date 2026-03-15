@@ -79,6 +79,7 @@ Body
 ```
 
 POST api/purchase - Realiza uma transação
+
 (Necessário id de um produto. Faça a autenticação e utilize o token para pegar o ID na rota GET api/products/)
 
 Body

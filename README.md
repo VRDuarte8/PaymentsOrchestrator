@@ -48,6 +48,7 @@ A API estará disponível em http://localhost:4000
 Em um novo terminal, execute as migrations e o seed:
 ```bash
 docker compose exec api npx prisma db push
+docker compose exec api npx prisma generate
 docker compose exec api npx prisma db seed
 ```
 

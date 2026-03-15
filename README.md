@@ -47,7 +47,7 @@ A API estará disponível em http://localhost:4000
 ### Prepare o Banco de Dados
 Em um novo terminal, execute as migrations e o seed:
 ```bash
-docker compose exec api npx prisma migrate dev --name init
+docker compose exec api npx prisma db push
 docker compose exec api npx prisma db seed
 ```
 

@@ -32,6 +32,8 @@ DATABASE_URL="mysql://root:root@mysql:3306/betalent"
 MYSQL_ROOT_PASSWORD=root
 MYSQL_DATABASE=betalent
 JWT_SECRET=sua_chave_secreta
+GATEWAY1_URL=http://gateway1:3001
+GATEWAY2_URL=http://gateway2:3002
 ```
 
 ### Suba os containers

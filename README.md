@@ -103,11 +103,12 @@ GET api/products/:id - Lista produto pelo ID
   POST api/products/register - Registra um produto
   Body
 
-````json
+```json
 {
   "name": "Arroz",
   "amount": "10.00"
 }
+```
 
 PUT api/products/:id - Atualiza um produto
 DELETE api/products/:id - Deleta um produto
@@ -123,6 +124,7 @@ Body
 {
   "name": "gateway1",
 }
+```
 
 PUT api/gateways/active/:id - Ativa ou desativa um gateway
 PUT api/gateways/priority/:id - Altera a prioridade de um gateway
@@ -131,6 +133,7 @@ Body
 {
   "priority": "3"
 }
+```
 
 DELETE api/gateways/:id - Deleta um gateway
 

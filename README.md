@@ -98,7 +98,7 @@ PUT api/users/:id - Atualiza user
 
 DELETE api/users/:id - Deleta um usuário
 
-### 🏪 Products - Apenas role ADMIN, MANAGER e FINANCE
+### 🏪 Products 
 
 GET api/products/ - Lista todos os produtos
 

@@ -6,7 +6,7 @@ import {
 } from './gatewayInterface.js';
 
 export class Gateway1 implements PaymentGateway {
-  private baseUrl = 'http://localhost:3001';
+  private baseUrl = process.env.GATEWAY1_URL || 'http://localhost:3001';
   private token: string | null = null;
 
   private async authenticate() {

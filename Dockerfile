@@ -6,10 +6,10 @@ COPY package.json package-lock.json tsconfig.json ./
 
 RUN npm install
 
-COPY . .
-
+COPY prisma ./prisma/
 RUN npx prisma generate
 
+COPY . .
 RUN npm run build
 
 EXPOSE 3000

@@ -44,10 +44,11 @@ docker compose up --build
 
 A API estará disponível em http://localhost:4000
 
-### Sincronize o Banco de Dados
-Em um novo terminal, execute:
+### Prepare o Banco de Dados
+Em um novo terminal, execute as migrations e o seed:
 ```bash
-docker compose exec api npx prisma db push
+docker compose exec api npx prisma migrate dev --name init
+docker compose exec api npx prisma db seed
 ```
 
 ## 📌 Rotas
@@ -136,7 +137,7 @@ POST api/gateways/register - Registra um gateway
 Body
 ```json
 {
-  "name": "gateway1",
+  "name": "gateway1"
 }
 ```
 

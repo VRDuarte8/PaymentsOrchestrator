@@ -65,7 +65,9 @@ Body
 ```
 
 POST api/auth/login - Autentica usuário
+
 Body
+
 ```json
 {
   "email": "vinicius@email.com",
@@ -74,6 +76,7 @@ Body
 ````
 
 POST api/purchase - Realiza uma transação
+
 Body
 
 ```json
@@ -92,16 +95,20 @@ Body
 ### 👤 Users - Apenas role ADMIN e MANAGER
 
 PUT api/users/:id - Atualiza user
+
 DELETE api/users/:id - Deleta um usuário
 
 ### 🏪 Products - Apenas role ADMIN, MANAGER e FINANCE
 
 GET api/products/ - Lista todos os produtos
+
 GET api/products/:id - Lista produto pelo ID
 
 - Apenas role ADMIN, MANAGER e FINANCE
-  POST api/products/register - Registra um produto
-  Body
+  
+POST api/products/register - Registra um produto
+  
+Body
 
 ```json
 {
@@ -111,14 +118,19 @@ GET api/products/:id - Lista produto pelo ID
 ```
 
 PUT api/products/:id - Atualiza um produto
+
 DELETE api/products/:id - Deleta um produto
 
 ### 🛜 Gateways
+
 GET api/gateways/ - Lista todos os gateways
+
 GET api/gateways/:id - Lista gateway pelo ID
 
 - Apenas role ADMIN e FINANCE
+
 POST api/gateways/register - Registra um gateway
+
 Body
 ```json
 {
@@ -127,7 +139,9 @@ Body
 ```
 
 PUT api/gateways/active/:id - Ativa ou desativa um gateway
+
 PUT api/gateways/priority/:id - Altera a prioridade de um gateway
+
 Body
 ```json
 {
@@ -138,9 +152,13 @@ Body
 DELETE api/gateways/:id - Deleta um gateway
 
 ### 🛍️ Transactions
+
 GET api/purchase/ - Lista todas as transações
+
 GET api/purchase/:id - Lista transação pelo ID
+
 GET api/purchase/clients - Lista todos os clientes
+
 GET api/purchase/clients/:id - Lista cliente pelo ID
 
 ## 🧪 Testes

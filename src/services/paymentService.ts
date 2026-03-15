@@ -43,11 +43,10 @@ export class PaymentService {
       } catch (error) {
         console.log(`Gateway ${gateway.name} falhou`);
       }
-
-      return {
-        success: false,
-        message: 'Todos os gateways falharam',
-      };
     }
+    return {
+      success: false,
+      message: 'Todos os gateways falharam',
+    };
   }
 }

@@ -12,7 +12,7 @@ export const purchase = async (req: Request, res: Response) => {
     });
 
     if (!product) {
-      return res.status(422).json({ errors: ['Produto não encontrado!'] });
+      return res.status(404).json({ errors: ['Produto não encontrado!'] });
     }
 
     const total = product.amount.toNumber() * parseInt(quantity);
@@ -141,7 +141,7 @@ export const listClientById = async (req: Request, res: Response) => {
     const client = await prisma.client.findUnique({ where: { id } });
 
     if (!client) {
-      return res.status(422).json({ error: 'Cliente não encontrado!' });
+      return res.status(404).json({ error: 'Cliente não encontrado!' });
     }
 
     res.status(200).json(client);

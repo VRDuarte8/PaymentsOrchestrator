@@ -74,7 +74,7 @@ export const enableOrDisableGateway = async (req: Request, res: Response) => {
     });
 
     if (!gateway) {
-      return res.status(422).json({ errors: ['Gateway não encontrado!'] });
+      return res.status(404).json({ errors: ['Gateway não encontrado!'] });
     }
 
     const updatedGateway = await prisma.gateway.update({
@@ -110,7 +110,7 @@ export const changeGatewayPriority = async (req: Request, res: Response) => {
     });
 
     if (!gateway) {
-      return res.status(422).json({ errors: ['Gateway não encontrado!'] });
+      return res.status(404).json({ errors: ['Gateway não encontrado!'] });
     }
 
     const oldPriority = gateway.priority;
@@ -189,7 +189,7 @@ export const deleteGateway = async (req: Request, res: Response) => {
     const deletedGateway = await prisma.gateway.findUnique({ where: { id } });
 
     if (!deletedGateway) {
-      return res.status(422).json({ errors: ['Gateway não encontrado!'] });
+      return res.status(404).json({ errors: ['Gateway não encontrado!'] });
     }
 
     const deletedPriority = deletedGateway.priority;

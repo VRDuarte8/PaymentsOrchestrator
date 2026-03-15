@@ -12,7 +12,7 @@ export const updateUser = async (req: Request, res: Response) => {
     const user = await prisma.user.findUnique({ where: { id } });
 
     if (!user) {
-      return res.status(422).json({ errors: ['Usuário não encontrado!'] });
+      return res.status(404).json({ errors: ['Usuário não encontrado!'] });
     }
 
     const updatedData: any = {};
@@ -50,7 +50,7 @@ export const deleteUser = async (req: Request, res: Response) => {
     const user = await prisma.user.findUnique({ where: { id } });
 
     if (!user) {
-      return res.status(422).json({ errors: ['Usuário não encontrado!'] });
+      return res.status(404).json({ errors: ['Usuário não encontrado!'] });
     }
 
     await prisma.user.delete({ where: { id } });

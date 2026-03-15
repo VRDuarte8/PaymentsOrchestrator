@@ -68,7 +68,7 @@ export const login = async (req: Request, res: Response) => {
     });
 
     if (!user) {
-      return res.status(404).json({ errors: ['Credenciais inválidas!'] });
+      return res.status(422).json({ errors: ['Credenciais inválidas!'] });
     }
 
     if (!(await bcrypt.compare(password, user.password))) {

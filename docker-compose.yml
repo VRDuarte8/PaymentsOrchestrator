@@ -1,0 +1,51 @@
+version: "3.9"
+
+services:
+  mysql:
+    image: mysql:8
+    container_name: mysql
+    ports:
+      - "3307:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
+    volumes:
+      - db_data:/var/lib/mysql
+    networks:
+      - app-network
+
+  gateway1:
+    image: matheusprotzen/gateways-mock
+    container_name: gateway1
+    ports:
+      - "3001:3001"
+    networks:
+      - app-network
+
+  gateway2:
+    image: matheusprotzen/gateways-mock
+    container_name: gateway2
+    ports:
+      - "3002:3002"
+    networks:
+      - app-network
+
+  api:
+    build: .
+    container_name: api
+    ports:
+      - "4000:3000"
+    depends_on:
+      - mysql
+      - gateway1
+      - gateway2
+    environment:
+      DATABASE_URL: ${DATABASE_URL}
+    networks:
+      - app-network
+
+networks:
+  app-network:
+
+volumes:
+  db_data:

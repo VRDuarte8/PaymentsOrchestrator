@@ -76,16 +76,17 @@ Body
   "email": "vinicius@email.com",
   "password": "123456"
 }
-````
+```
 
 POST api/purchase - Realiza uma transação
+(Necessário id de um produto. Faça a autenticação e utilize o token para pegar o ID na rota GET api/products/)
 
 Body
 
 ```json
 {
   "product_id": "e313...",
-  "quantity": "3",
+  "quantity": 3,
   "name": "Vinicius",
   "email": "vinicius@teste.com",
   "cardNumber": "9874563211236547",

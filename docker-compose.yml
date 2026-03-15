@@ -38,6 +38,7 @@ services:
       - gateway1
       - gateway2
     environment:
+      JWT_SECRET: ${JWT_SECRET}
       DATABASE_URL: ${DATABASE_URL}
       GATEWAY1_URL: http://gateway1:3001
       GATEWAY2_URL: http://gateway2:3002
